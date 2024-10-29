@@ -4,6 +4,7 @@ package geometry;
 
 import org.junit.jupiter.api.Test;
 
+
 public class RectangularPrismTest {
 	@Test
 	void should_create_cube() {
