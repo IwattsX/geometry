@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class App {
+    /**
+     * Main function that implements a REPL
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         GeometryLinkedList<GeometryBase> list = new GeometryLinkedList<>();
         Scanner sc = new Scanner(System.in);
@@ -40,7 +45,12 @@ public class App {
         }
         sc.close();
     }
-
+    /**
+     * Adds a shape to a linkedList
+     * 
+     * @param list the linkedList
+     * @param sc scanner for user input
+     */
     private static void addShape(GeometryLinkedList<GeometryBase> list, Scanner sc) {
         System.out.println("Which shape do you want to add?");
         System.out.println("1. Circle\n2. Rectangle\n3. Triangle\n4. Rectangular Prism\n5. Triangular Prism\n6. Sphere ");
@@ -91,7 +101,12 @@ public class App {
             default -> System.out.println("Invalid shape choice. Please try again.");
         }
     }
-
+    /**
+     * removes a shape to a linkedList
+     * 
+     * @param list the linkedList
+     * @param sc scanner for user input
+     */
     private static void removeShape(GeometryLinkedList<GeometryBase> list, Scanner sc) {
         System.out.println("Which shape do you want to remove?");
         System.out.println("1. Circle\n2. Rectangle\n3. Triangle\n4. Rectangular Prism\n5. Triangular Prism\n6. Sphere ");
@@ -110,13 +125,16 @@ public class App {
         boolean removed = false;
         for (int i = 0; i < list.size(); i++) {
             GeometryBase shape = list.get(i);
-            if (shape.getClass().getSimpleName().equalsIgnoreCase(map.get(shapeChoice))) {
+            String shapeType = shape.getClass().getSimpleName();
+            if (shapeType.equalsIgnoreCase(map.get(shapeChoice))) {
                 System.out.println("Is this the shape you want to remove");
+                System.out.println(shapeType);
+
                 String choice = sc.next();
                 if(choice.equalsIgnoreCase("n")){
                     continue;
                 }
-                System.out.println("Removing " + shape.getClass().getSimpleName()  + "...");
+                System.out.println("Removing " + shapeType  + "...");
                 list.remove(i);
                 removed = true;
                 break;
@@ -128,6 +146,12 @@ public class App {
         }
     }
 
+    /**
+     * finds a shape to a linkedList
+     * 
+     * @param list the linkedList
+     * @param sc scanner for user input
+     */
     private static void findShape(GeometryLinkedList<GeometryBase> list, Scanner sc) {
         System.out.println("Which shape do you want to find?");
         System.out.println("1. Circle\n2. Rectangle\n3. Triangle\n4. Rectangular Prism\n5. Triangular Prism\n6. Sphere ");
@@ -143,11 +167,12 @@ public class App {
         map.put(6, "Sphere");
 
         for (GeometryBase shape : list) {
-            if (shape.getClass().getSimpleName().equalsIgnoreCase(map.get(shapeChoice))) {
+            String shapeType = shape.getClass().getSimpleName();
+            if (shapeType.equalsIgnoreCase(map.get(shapeChoice))) {
                 if (shape instanceof Geometry2D geometry2D) {
-                    System.out.printf("2D Shape: Area = %.2f, Perimeter = %.2f%n", geometry2D.area(), geometry2D.perimeter());
+                    System.out.printf("2D Shape %s: Area = %.2f, Perimeter = %.2f%n", shapeType, geometry2D.area(), geometry2D.perimeter());
                 } else if (shape instanceof Geometry3D geometry3D) {
-                    System.out.printf("3D Shape: Volume = %.2f, Surface Area = %.2f%n", geometry3D.volume(), geometry3D.surfaceArea());
+                    System.out.printf("3D Shape %s: Volume = %.2f, Surface Area = %.2f%n", shapeType, geometry3D.volume(), geometry3D.surfaceArea());
                 }
             }
         }
