@@ -1,7 +1,9 @@
 package geometry;
 import java.util.LinkedList;
 
-// stores Objects which will be Geometry2D and Geometry3D objects
+/**
+ * Stores a bunch of Geometries as a LinkedList
+ */
 public class GeometryLinkedList<T extends GeometryBase> extends LinkedList<T> {
     
 }

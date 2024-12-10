@@ -35,7 +35,6 @@ public class RectangularPrism extends Geometry3D {
 	 */
 	@Override
 	double surfaceArea() {
-		// TODO Auto-generated method stub
 		return 2 * (l * w + l * h + h * w);
 	}
 
