@@ -9,11 +9,9 @@ import org.junit.jupiter.api.Test;
  */
 public class AppTest {
 
-    /**
-     * Rigorous Test :-)
-     */
+    // For future integration testing
     @Test
-    public void shouldAnswerWithTrue() {
-        assertTrue(true);
+    void REPL_test(){
+        
     }
 }
