@@ -127,7 +127,7 @@ public class App {
             GeometryBase shape = list.get(i);
             String shapeType = shape.getClass().getSimpleName();
             if (shapeType.equalsIgnoreCase(map.get(shapeChoice))) {
-                System.out.println("Is this the shape you want to remove");
+                System.out.println("Is this the shape you want to remove: y/n");
                 System.out.println(shapeType);
 
                 String choice = sc.next();
